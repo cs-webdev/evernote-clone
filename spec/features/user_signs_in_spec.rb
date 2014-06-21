@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'User signs in' do
     scenario 'success login' do
-        user = User.create email: "aslkjd@saskjd.pt", password: "iasdodioas"
+        user = User.create email: "vasco@gmail.com", password: "iasdodioas"
         visit sign_in_path
 
         within 'form' do
