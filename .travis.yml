@@ -1,0 +1,13 @@
+language: ruby
+rvm:
+  - "2.0.0"
+  - ruby-head
+env:
+  - "RAILS_VERSION=4.0"
+  - "RAILS_VERSION=4.1"
+  - "RAILS_VERSION=master"
+script: bundle exec rspec spec
+matrix:
+  allow_failures:
+    - rvm: ruby-head
+    - env: "RAILS_VERSION=master"
