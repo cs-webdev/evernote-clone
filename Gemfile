@@ -38,9 +38,10 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-group :test do 
-	gem 'capybara' 
-	gem 'capybara-webkit' 
-	gem 'rspec-rails' 
+group :test do
+  gem 'capybara'
+  gem 'capybara-webkit'
+  gem 'coveralls', require: false
+  gem 'rspec-rails'
 end
 
