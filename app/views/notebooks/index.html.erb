@@ -1,0 +1,9 @@
+<h1>Notebooks</h1>
+<ul>
+<% @notebooks.each do | notebook | %>
+	<li><%= notebook.description %></li>
+<% end %>
+</ul>
+
+
+<%= link_to 'New Notebook', new_notebook_path %>
