@@ -1,7 +1,7 @@
 <h1>Notebooks</h1>
 <ul>
 <% @notebooks.each do | notebook | %>
-	<li><%= notebook.description %></li>
+  <li><%= link_to notebook.description , notebook %></li>
 <% end %>
 </ul>
 

@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-feature 'Guest view notebooks' do 
+feature 'Guest view notebooks' do
 	scenario 'view all notebooks' do
 		Notebook.create description: 'First Notebook'
 		Notebook.create description: 'Second Notebook'
 		visit root_path
- 
+
 		expect(page).to have_text 'First Notebook'
 		expect(page).to have_text 'Second Notebook'
 	end
@@ -13,9 +13,9 @@ feature 'Guest view notebooks' do
 	scenario 'view notebook' do
 		notebook = Notebook.create description: 'First Notebook'
 		Notebook.create description: 'Second Notebook'
-		
+
 		visit notebook_path(notebook)
- 
+
 		expect(page).to have_text 'First Notebook'
 		expect(page).not_to have_text 'Second Notebook'
 	end
@@ -28,23 +28,17 @@ feature 'Guest view notebooks' do
 
       click_on 'Create Notebook'
     end
- 
+
 		expect(page).to have_text 'xpto'
 	end
 
-	scenario 'remove notebook' do
+	scenario 'delete notebook' do
 		notebook = Notebook.create description: 'First Notebook'
-
 		visit notebook_path(notebook)
 
-		expect { Notebook.find(notebook.id) }.to raise_error
-	end
+		click_on 'Delete'
 
-	scenario 'view only guest notebooks' do
-		# Notebook.create description: 'First Notebook'
-		# visit root_path
- 
-		# expect(page).to have_text 'First Notebook'
+		expect(page).not_to have_text('First Notebook')
 	end
 
 end

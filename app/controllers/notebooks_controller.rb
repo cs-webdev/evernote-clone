@@ -9,7 +9,7 @@ class NotebooksController < ApplicationController
 	end
 
 	def new
-		@notebook = Notebook.new 
+		@notebook = Notebook.new
 	end
 
 	def create
@@ -26,7 +26,9 @@ class NotebooksController < ApplicationController
 	end
 
 	def destroy
-
+		@notebook = Notebook.find params[:id]
+		Notebook.delete @notebook
+		redirect_to root_path
 	end
 
 	def update
