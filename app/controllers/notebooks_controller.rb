@@ -32,7 +32,12 @@ class NotebooksController < ApplicationController
 	end
 
 	def update
-
+		@notebook = Notebook.find params[:id]
+		if @notebook.update(notebook_params)
+    	redirect_to(@notebook)
+  	else
+    	render "edit"
+  	end
 	end
 
 	private
