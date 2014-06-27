@@ -34,11 +34,25 @@ feature 'Guest view notebooks' do
 
 	scenario 'delete notebook' do
 		notebook = Notebook.create description: 'First Notebook'
-		visit notebook_path(notebook)
+		visit notebooks_path
 
 		click_on 'Delete'
 
 		expect(page).not_to have_text('First Notebook')
+	end
+
+	scenario 'edit notebook' do
+		notebook = Notebook.create description: 'First Notebook'
+		visit edit_notebook_path(notebook)
+
+		within 'form' do
+			fill_in 'Description', with: 'xpto'
+
+      click_on 'Update Notebook'
+    end
+
+		expect(page).not_to have_text('First Notebook')
+		expect(page).to have_text('xpto')
 	end
 
 end
