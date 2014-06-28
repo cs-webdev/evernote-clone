@@ -45,4 +45,5 @@ group :test do
 end
 
 gem 'clearance'
+gem 'cancancan', '~> 1.8'
 
