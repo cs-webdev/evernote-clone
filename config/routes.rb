@@ -54,7 +54,7 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 
-  root 'notebooks#index'
+  root "notebooks#index"
 
   resources :notebooks
 

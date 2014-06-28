@@ -35,7 +35,7 @@ class NotebooksController < ApplicationController
     if @notebook.update(notebook_params)
       redirect_to(@notebook)
     else
-      render 'edit'
+      render "edit"
     end
   end
 
