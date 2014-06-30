@@ -1,5 +1,5 @@
 class UsersController < Clearance::UsersController
-  load_and_authorize_resource
+  # authorize_resource
   
   def show
 
