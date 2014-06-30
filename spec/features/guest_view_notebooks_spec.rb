@@ -5,7 +5,7 @@ feature "Guest view notebooks" do
     Notebook.create description: "First Notebook"
     Notebook.create description: "Second Notebook"
 
-    visit root_path
+    visit notebooks_path
 
     expect(page).to have_text "First Notebook"
     expect(page).to have_text "Second Notebook"
