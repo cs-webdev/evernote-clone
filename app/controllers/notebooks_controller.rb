@@ -12,7 +12,7 @@ class NotebooksController < ApplicationController
   end
 
   def create
-    @notebook = Notebook.create notebook_params
+    @notebook = Notebook.new notebook_params
     if @notebook.save
       redirect_to notebook_path(@notebook)
     else
@@ -25,8 +25,7 @@ class NotebooksController < ApplicationController
   end
 
   def destroy
-    @notebook = Notebook.find params[:id]
-    Notebook.delete @notebook
+    Notebook.find(params[:id]).destroy
     redirect_to root_path
   end
 
