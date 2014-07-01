@@ -12,4 +12,5 @@ class User < ActiveRecord::Base
     username.presence || "not defined"
   end
 
+  has_many :notebooks
 end
