@@ -46,3 +46,4 @@ end
 
 gem 'clearance'
 
+gem 'bootstrap-sass'

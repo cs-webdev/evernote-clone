@@ -1,0 +1,84 @@
+$green: #2dbe60; 
+
+*{
+    box-sizing: border-box;
+    color: #3b3b3b;
+}
+
+h1 {
+    font-size: 24px;
+}
+
+h2 {
+    font-size: 16px;
+    color: #868686;
+}
+main {
+    padding-top: 53px;
+}
+.intro {
+    width: 100%;
+    border: 1px solid #bdbdbd;
+    margin-top: 40px;
+    padding: 40px;
+}
+
+hr {
+    border: 1px solid #bdbdbd;
+}
+
+.navbar-inverse {
+    background-color: $green;
+    border: 0;
+    
+    .navbar-brand {
+        color: #fff;
+
+        .glyphicon {
+            color: #454545;
+            margin-right: 15px;
+            font-size: 27px;
+            vertical-align: middle;
+
+        }
+
+        .brand-name {
+            vertical-align: middle;
+            text-transform: uppercase;
+            color: #fff;
+        }
+    }
+
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #fff;      
+}
+
+.intro-right {
+    text-align: center;
+    font-size: 150px;
+
+    span {
+        color: $green;
+    }
+
+}
+
+.sign-form {
+   
+    a {
+        -webkit-appearance: none;
+        cursor: pointer;
+        background-color: $green;
+        text-align: center;
+        color: #fff;
+        border-radius: 5px;
+        line-height: 16px;
+        margin-top: 35px;
+        padding: 10px 30px;
+        text-decoration: none;
+        display: inline-block;
+    } 
+}
+
