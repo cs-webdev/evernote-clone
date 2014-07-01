@@ -1,4 +1,6 @@
 class NotebooksController < ApplicationController
+  # before_filter :authorize
+
   def index
     @notebooks = Notebook.all
   end

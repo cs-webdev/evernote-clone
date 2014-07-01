@@ -12,6 +12,6 @@ feature 'User signs in' do
       click_on 'Sign in'
     end
 
-    expect(page).to have_content 'Welcome'
-  end 
+    expect(page).to have_content 'Signed in as'
+  end
 end
