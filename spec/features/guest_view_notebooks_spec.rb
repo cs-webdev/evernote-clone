@@ -15,8 +15,8 @@ feature "Guest view notebooks" do
     user1 = User.create email: 'vasco@gmail.com', password: 'iasdodioas'
     user2 = User.create email: 'migpfernandes@gmail.com', password: 'iasdodioas'
 
-    Notebook.create description: "First Notebook" user: user1
-    Notebook.create description: "Second Notebook" user: user2
+    Notebook.create description: "First Notebook", user: user1
+    Notebook.create description: "Second Notebook", user: user2
 
     visit sign_in_path
 

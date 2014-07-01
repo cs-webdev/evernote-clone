@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   delete 'delete_account', to: 'users#delete', as: 'delete_account'
   get 'edit_username', to: 'users#edit_username', as: 'edit_username'
   patch 'update_username', to: 'users#update_username', as: 'update_username'
-  
-  resources :users, 
+
+  resources :users,
     controller: 'users',
     only: 'create'
 
