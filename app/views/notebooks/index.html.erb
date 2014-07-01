@@ -1,0 +1,14 @@
+<h1>Notebooks</h1>
+
+<table>
+  <% @notebooks.each do |notebook|%>
+    <tr>
+      <td><%= notebook.description %></td>
+      <td><%= link_to "Show" , notebook %></td>
+      <td><%= link_to "Rename" , edit_notebook_path(notebook) %></td>
+      <td><%= link_to "Delete" , notebook, method: :delete %></td>
+    </tr>
+  <%end%>
+</table>
+
+<%= link_to "New Notebook", new_notebook_path %>
