@@ -1,6 +1,11 @@
 require "rails_helper"
 
 feature "Guest view notebooks" do
+  before do
+    @user = User.create email: 'teste@gmail.com', password: '123123'
+    User.authenticate(@user.email, @user.password)
+  end
+
   scenario "view all notebooks" do
     Notebook.create description: "First Notebook"
     Notebook.create description: "Second Notebook"
@@ -15,20 +20,13 @@ feature "Guest view notebooks" do
     user1 = User.create email: 'vasco@gmail.com', password: 'iasdodioas'
     user2 = User.create email: 'migpfernandes@gmail.com', password: 'iasdodioas'
 
-    Notebook.create description: "First Notebook", user: user1
-    Notebook.create description: "Second Notebook", user: user2
-
-    visit sign_in_path
-
-    within 'form' do
-      fill_in 'Email', with: user1.email
-      fill_in 'Password', with: 'iasdodioas'
-
-      click_on 'Sign in'
-    end
+    Notebook.create description: "First Notebook", user: @user
+    Notebook.create description: "Second Notebook", user: user1
+    Notebook.create description: "Third Notebook", user: user2
 
     expect(page).to have_text "First Notebook"
     expect(page).not_to have_text "Second Notebook"
+    expect(page).not_to have_text "Third Notebook"
   end
 
   scenario "view notebook" do
