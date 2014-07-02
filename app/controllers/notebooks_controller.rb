@@ -2,7 +2,7 @@ class NotebooksController < ApplicationController
   skip_authorization_check
 
   def index
-    @notebooks = Notebook.all
+    @notebooks = current_user.notebooks
   end
 
   def show
@@ -15,6 +15,7 @@ class NotebooksController < ApplicationController
 
   def create
     @notebook = Notebook.new notebook_params
+    @notebook.user = current_user
     if @notebook.save
       redirect_to notebook_path(@notebook)
     else
