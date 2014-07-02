@@ -19,8 +19,28 @@ class UsersController < Clearance::UsersController
   def delete
     User.find(current_user.id).destroy
     # current_user = nil
-    flash[:alert] = "You deleted your account successfuly."
+    flash[:alert] = 'You deleted your account successfuly.'
     redirect_to root_path
+  end
+
+  def edit_username
+    @username = current_user.username
+    @user = current_user
+  end
+
+  def update_username
+    username = params[:username]
+    @username = current_user.username
+    current_user.username = username
+    if current_user.save
+      flash[:notice] = 'You edited your username successfuly.'
+      redirect_to account_path
+    else
+      current_user.username = @username
+      @user = current_user
+      flash[:alert] = 'An error ocurred.'
+      render 'edit_username'
+    end
   end
 
   private

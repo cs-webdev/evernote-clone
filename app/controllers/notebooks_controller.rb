@@ -1,4 +1,6 @@
 class NotebooksController < ApplicationController
+  skip_authorization_check
+  
   def index
     @notebooks = Notebook.all
   end

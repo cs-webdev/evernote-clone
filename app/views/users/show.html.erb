@@ -1,5 +1,31 @@
-<ul>
-  <li><%= current_user.email %></li>
-  <li><%= link_to 'Edit Password', edit_user_password_path(current_user) %></li>
-  <li><%= link_to 'Delete Account', delete_account_path %></li>
-</uL>
+<h2>Your Account</h2>
+
+<table>
+  <tr>
+    <td colspan="3">You are signed in via your email (<b><%= current_user.email %></b>)</td>
+  </tr>
+  <tr>
+    <td>Username</td>
+    <td>
+      <% unless current_user.username.blank? %>
+        <%= current_user.username %>
+      <% else %>
+        none
+      <% end %>
+    </td>
+    <td>
+      <%= link_to 'edit', edit_username_path, id: 'edit_username_link' %>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">Password</td>
+    <td>
+      <%= link_to 'edit', edit_user_password_path(current_user.id) %>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">Account</td>
+    <td><%= link_to 'delete', delete_account_path, id: 'delete_account_link', confirm: 'Are you sure?', method: 'delete' %></td>
+  </tr>
+</table> 
+

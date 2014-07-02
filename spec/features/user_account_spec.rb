@@ -11,6 +11,43 @@ feature 'access to account page' do
     user = User.create email: 'vasco@gmail.com', password: 'aasdjasjdas'
 
     visit account_path(as: user)
-    expect(page).to have_content('vasco@gmail.com')
+    expect(page).to have_content('Your Account')
   end
 end
+
+feature 'account edition' do
+  before :each do
+    @user = User.create email: 'vasco@gmail.com', password: 'aosjdasdlkjasd'
+  end
+
+  scenario 'user deletes his account' do
+    visit account_path(as: @user)
+    click_link 'delete_account_link'
+
+    expect(page).to have_content('You deleted your account successfuly.')
+  end
+
+  scenario 'user edits his name successfuly' do
+    visit account_path(as: @user)
+
+    click_link 'edit_username_link'
+    within 'form' do
+      fill_in 'username', with: 'pegasus'
+      click_button 'save'
+    end
+
+    expect(page).to have_content('pegasus' && 'You edited your username successfuly')
+  end
+
+  scenario 'user inputs to long username' do
+    visit edit_username_path(as: @user)
+
+    within 'form' do 
+      fill_in 'username', with: '12345678901234567890'
+      click_button 'save'
+    end
+
+    expect(page).to have_content('error' && 'must have at most')
+  end
+end
+
