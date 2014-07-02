@@ -1,7 +1,6 @@
 require "rails_helper"
 
 feature "Guest view notebooks" do
-
   scenario "guest can only see his notebooks" do
     user = User.create email: 'teste@gmail.com', password: 'iasdodioas'
     user1 = User.create email: 'vasco@gmail.com', password: 'iasdodioas'
@@ -15,6 +14,7 @@ feature "Guest view notebooks" do
 
     expect(page).to have_text "First Notebook"
     expect(page).not_to have_text "Second Notebook"
+    expect(page).not_to have_text "Third Notebook"
   end
 
   scenario "view notebook" do
