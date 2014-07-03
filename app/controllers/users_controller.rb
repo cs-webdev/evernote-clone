@@ -18,7 +18,6 @@ class UsersController < Clearance::UsersController
 
   def delete
     User.find(current_user.id).destroy
-    # current_user = nil
     flash[:alert] = 'You deleted your account successfuly.'
     redirect_to root_path
   end

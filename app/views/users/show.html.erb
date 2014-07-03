@@ -7,11 +7,7 @@
   <tr>
     <td>Username</td>
     <td>
-      <% unless current_user.username.blank? %>
         <%= current_user.username %>
-      <% else %>
-        none
-      <% end %>
     </td>
     <td>
       <%= link_to 'edit', edit_username_path, id: 'edit_username_link' %>
