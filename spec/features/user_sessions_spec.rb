@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'User signs in' do
   scenario 'success login' do
-    user = User.create email: 'vasco@gmail.com', password: 'iasdodioas', username: random_string
+    user = create(:user)
     visit sign_in_path
 
     within 'form' do
@@ -18,7 +18,7 @@ end
 
 feature 'Account creation' do
   scenario 'Guest creates account with username' do
-    user = User.new email: 'vasco@gmail.com', username: random_string, password: 'oasidoapsjdsojf'
+    user = build(:user)
     visit sign_up_path
 
     within 'form' do
@@ -31,9 +31,4 @@ feature 'Account creation' do
 
     expect(page).to have_content "Welcome, #{user.username}"
   end
-end
-
-private
-def random_string
-  (0...8).map { ('a'..'z').to_a[rand(26)] }.join
 end

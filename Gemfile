@@ -19,4 +19,6 @@ group :test do
   gem 'capybara'
   gem 'capybara-webkit'
   gem 'rspec-rails'
+  gem 'faker'
+  gem "factory_girl_rails", "~> 4.0"
 end

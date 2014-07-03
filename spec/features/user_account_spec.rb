@@ -8,7 +8,7 @@ feature 'access to account page' do
   end
 
   scenario 'user goes to his account page' do
-    user = User.create email: 'vasco@gmail.com', password: 'aasdjasjdas'
+    user = create(:user)
 
     visit account_path(as: user)
     expect(page).to have_content('Your Account')
@@ -17,7 +17,7 @@ end
 
 feature 'account edition' do
   before :each do
-    @user = User.create email: 'vasco@gmail.com', password: 'aosjdasdlkjasd'
+    @user = create(:user)
   end
 
   scenario 'user deletes his account' do
@@ -43,7 +43,7 @@ feature 'account edition' do
     visit edit_username_path(as: @user)
 
     within 'form' do 
-      fill_in 'username', with: '12345678901234567890'
+      fill_in 'username', with: Faker::Internet.user_name(41)
       click_button 'save'
     end
 
