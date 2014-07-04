@@ -1,3 +1,13 @@
-<%= @notebook.description %>
+<div class="intro">
 
-<%= link_to "Delete" , @notebook, method: :delete %>
+	<table class="notebook-display">
+	  
+	    <tr>
+	      <td class="notebook-description"><h4><%= @notebook.description %></h4></td>
+	      <td><%= link_to "Delete" , @notebook, method: :delete %></td>
+	    </tr>
+	</table>
+	
+	<%= link_to "Back", notebooks_path %>
+
+</div>

@@ -11,10 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140701163306) do
+ActiveRecord::Schema.define(version: 20140704000552) do
 
   create_table "notebooks", force: true do |t|
     t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "notes", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -26,7 +31,6 @@ ActiveRecord::Schema.define(version: 20140701163306) do
     t.string   "encrypted_password", limit: 128, null: false
     t.string   "confirmation_token", limit: 128
     t.string   "remember_token",     limit: 128, null: false
-    t.string   "username"
   end
 
   add_index "users", ["email"], name: "index_users_on_email"
