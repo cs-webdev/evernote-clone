@@ -7,7 +7,7 @@
   <tr>
     <td>Username</td>
     <td>
-        <%= current_user.username %>
+        <%= current_user.get_username %>
     </td>
     <td>
       <%= link_to 'edit', edit_username_path, id: 'edit_username_link' %>

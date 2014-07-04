@@ -7,4 +7,8 @@ class User < ActiveRecord::Base
     username.presence || email
   end
 
+  def get_username
+    username.presence || "not defined"
+  end
+
 end

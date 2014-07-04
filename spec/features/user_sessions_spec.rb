@@ -31,4 +31,21 @@ feature 'Account creation' do
 
     expect(page).to have_content "Welcome, #{user.username}"
   end
+
+  scenario 'Guest creates account without username' do
+    user = build(:user, username: '')
+    visit sign_up_path
+
+    within 'form' do 
+      fill_in 'Email', with: user.email
+      fill_in 'Password', with: user.password
+
+      click_on 'Sign up'
+    end
+
+    expect(page).to have_content "Welcome, #{user.email}"
+    visit account_path
+    expect(page).to have_content "not defined"
+  end
+
 end
