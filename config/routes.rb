@@ -11,9 +11,5 @@ Rails.application.routes.draw do
   resources :notebooks
   resources :notes
 
-  resource  :session,
-    :controller => "sessions",
-    :only => [:new, :create, :destroy]
-
   root 'welcome#index'
 end

@@ -13,8 +13,8 @@ class UsersController < Clearance::UsersController
       redirect_to '/'
     else
       render template: 'users/new'
-    end 
-  end 
+    end
+  end
 
   def delete
     User.find(current_user.id).destroy
