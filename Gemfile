@@ -16,8 +16,6 @@ group :development do
   gem 'spring'
 end
 
-gem 'clearance'
-
 gem 'bootstrap-sass'
 
 group :test do
@@ -25,6 +23,6 @@ group :test do
   gem 'capybara-webkit'
   gem 'rspec-rails'
   gem 'faker'
-  gem "factory_girl_rails", "~> 4.0"
+  gem 'factory_girl_rails', '~> 4.0'
 end
 
