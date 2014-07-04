@@ -1,4 +1,6 @@
 class NotesController < ApplicationController
+  skip_authorization_check
+
   def index
     @note = Note.all
   end
