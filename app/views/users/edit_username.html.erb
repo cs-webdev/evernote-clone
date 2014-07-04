@@ -1,0 +1,6 @@
+<h2>Edit Your Username</h2>
+<%= simple_form_for @user, url: {controller: 'users', action: 'update_username'} do |f| %>
+  <%= f.input :username %>
+
+  <%= f.submit 'save' %>
+<% end %>
