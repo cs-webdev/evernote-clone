@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     only: 'create'
 
   resources :notebooks
+  resources :notes
 
   root 'welcome#index'
 end

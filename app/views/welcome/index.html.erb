@@ -1,1 +1,22 @@
-<h1>Welcome</h1>
+<section class="intro">
+    <h1>Welcome</h1>
+    <hr>
+    <div class="row">
+        <div class="intro-left col-md-6">
+            <h2>Everynote helps you remember everything across all the computers, phones and tablets you use.</h2>
+            
+            <section class="sign-form" role="form" id="session-info">
+                <% if signed_in? %>
+                <h4>Signed in as:</h4> <%= current_user.email %><br />
+                <%= link_to 'Sign out', sign_out_path, :method => :delete %>
+                <% else %>
+                <%= link_to 'Sign in', sign_in_path %>
+                <% end %>
+            </section>
+
+        </div>
+        <div class="intro-right col-md-4 col-md-offset-2">
+            <span class="glyphicon glyphicon-ok-circle"></span>    
+        </div>
+    </div>    
+</section>
