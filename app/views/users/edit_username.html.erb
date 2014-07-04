@@ -1,8 +1,6 @@
 <h2>Edit Your Username</h2>
-<%= form_errors(@user) %>
-<%= form_tag('/update_username', method: 'put') do %>
-  <%= label_tag :username, 'Username' %>
-  <%= text_field_tag :username, @username %>
+<%= simple_form_for @user, url: {controller: 'users', action: 'update_username'} do |f| %>
+  <%= f.input :username %>
 
-  <%= submit_tag 'save' %>
+  <%= f.submit 'save' %>
 <% end %>

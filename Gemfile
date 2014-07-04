@@ -9,6 +9,7 @@ gem 'jquery-rails'
 gem 'sass-rails', '~> 4.0.3'
 gem 'sqlite3'
 gem 'uglifier', '>= 1.3.0'
+gem 'simple_form'
 
 group :development do
   gem 'pry-rails'

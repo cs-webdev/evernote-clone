@@ -23,20 +23,15 @@ class UsersController < Clearance::UsersController
   end
 
   def edit_username
-    @username = current_user.username
     @user = current_user
   end
 
   def update_username
-    username = params[:username]
-    @username = current_user.username
-    current_user.username = username
-    if current_user.save
+    @user = current_user
+    if @user.update(username_params)
       flash[:notice] = 'You edited your username successfuly.'
       redirect_to account_path
     else
-      current_user.username = @username
-      @user = current_user
       flash[:alert] = 'An error ocurred.'
       render 'edit_username'
     end
@@ -55,5 +50,9 @@ class UsersController < Clearance::UsersController
       user.email = email
       user.password = password
     end
+  end
+
+  def username_params
+    params.require(:user).permit(:username)
   end
 end

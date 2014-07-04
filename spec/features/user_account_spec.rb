@@ -32,22 +32,11 @@ feature 'account edition' do
 
     click_link 'edit_username_link'
     within 'form' do
-      fill_in 'username', with: 'pegasus'
+      fill_in 'Username', with: 'pegasus'
       click_button 'save'
     end
 
     expect(page).to have_content('pegasus' && 'You edited your username successfuly')
-  end
-
-  scenario 'user inputs to long username' do
-    visit edit_username_path(as: @user)
-
-    within 'form' do 
-      fill_in 'username', with: Faker::Internet.user_name(41)
-      click_button 'save'
-    end
-
-    expect(page).to have_content('error' && 'must have at most')
   end
 end
 
