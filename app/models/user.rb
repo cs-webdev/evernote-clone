@@ -11,6 +11,4 @@ class User < ActiveRecord::Base
   def get_username
     username.presence || "not defined"
   end
-
-  has_many :notebooks
 end

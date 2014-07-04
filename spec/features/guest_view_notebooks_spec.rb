@@ -2,7 +2,6 @@ require "rails_helper"
 
 feature "Guest view notebooks" do
   scenario "guest can only see his notebooks" do
-
     current_user = User.create email: 'user@example.com', password: '123456'
     user1 = User.create email: 'vasco@gmail.com', password: 'iasdodioas'
     user2 = User.create email: 'migpfernandes@gmail.com', password: 'iasdodioas'
