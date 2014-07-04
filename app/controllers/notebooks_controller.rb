@@ -1,5 +1,5 @@
 class NotebooksController < ApplicationController
-  before_filter :authorize
+  skip_authorization_check
 
   def index
     @notebooks = current_user.notebooks
