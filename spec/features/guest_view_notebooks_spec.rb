@@ -2,40 +2,39 @@ require "rails_helper"
 
 feature "Guest view notebooks" do
   scenario "guest can only see his notebooks" do
-    current_user = User.create email: 'user@example.com', password: '123456'
-    user1 = User.create email: 'vasco@gmail.com', password: 'iasdodioas'
-    user2 = User.create email: 'migpfernandes@gmail.com', password: 'iasdodioas'
+    
+    current_user = create(:user)
+    user1 = create(:user)
 
-    Notebook.create description: "First Notebook", user: current_user
-    Notebook.create description: "Second Notebook", user: user1
-    Notebook.create description: "Third Notebook", user: user2
+    notebook1 = create(:notebook, user: current_user)
+    notebook2 = create(:notebook, user: user1)
 
     visit notebooks_path(as: current_user)
 
-    expect(page).to have_text "First Notebook"
-    expect(page).not_to have_text "Second Notebook"
-    expect(page).not_to have_text "Third Notebook"
+    expect(page).to have_text notebook1.description
+    expect(page).not_to have_text notebook2.description
   end
 
-  scenario "view notebook" do
-    notebook = Notebook.create description: "First Notebook"
-    Notebook.create description: "Second Notebook"
+  scenario "view notebook" do   
+    user = create(:user)
+    notebook = create(:notebook, user: user)
+    visit notebook_path(notebook, as: user)
 
-    visit notebook_path(notebook)
-
-    expect(page).to have_text "First Notebook"
-    expect(page).not_to have_text "Second Notebook"
+    expect(page).to have_text notebook.description
   end
 
   scenario "create notebook" do
-    visit new_notebook_path
+    user = create(:user)
+    notebook = build(:notebook, user: user)
+
+    visit new_notebook_path(as: user)
 
     within "form" do
-      fill_in "Description", with: "xpto"
+      fill_in "Description", with: notebook.description
 
       click_on "Create Notebook"
     end
-    expect(page).to have_text "xpto"
+    expect(page).to have_text notebook.description
   end
 
   scenario "delete notebook" do
@@ -49,8 +48,10 @@ feature "Guest view notebooks" do
   end
 
   scenario "edit notebook" do
-    notebook = Notebook.create description: "First Notebook"
-    visit edit_notebook_path(notebook)
+    user = create(:user)
+    notebook = create(:notebook, user: user)
+
+    visit edit_notebook_path(notebook, as: user)
 
     within "form" do
       fill_in "Description", with: "xpto"
@@ -58,7 +59,7 @@ feature "Guest view notebooks" do
       click_on "Update Notebook"
     end
 
-    expect(page).not_to have_text("First Notebook")
+    expect(page).not_to have_text(notebook.description)
     expect(page).to have_text("xpto")
   end
 end
