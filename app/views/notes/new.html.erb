@@ -1,3 +1,5 @@
 <h1>Create Note</h1>
 
-<%= render "form" %>
+<%= form_for @note, url: notebook_notes_path(params[:notebook_id]) do |form| %>
+  <%= render "form", form: form %>
+<% end %>

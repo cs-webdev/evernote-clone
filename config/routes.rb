@@ -8,8 +8,9 @@ Rails.application.routes.draw do
     controller: 'users',
     only: 'create'
 
-  resources :notebooks
-  resources :notes
+  resources :notebooks do
+    resources :notes
+  end
 
   root 'welcome#index'
 end
