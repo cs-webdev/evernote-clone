@@ -150,3 +150,16 @@ input[type="submit"] {
   }
 }
 
+#session-info {
+  display: inline-block;
+  float: right;
+  margin-top:15px;
+
+  a {
+    color: #fff;
+  }
+}
+
+.flash {
+  margin-top: 20px;
+}

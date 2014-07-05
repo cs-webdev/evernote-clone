@@ -13,6 +13,7 @@
       <li>
           <%= note.text %>
           <%= link_to 'Edit note', edit_notebook_note_path(notebook_id:  @notebook.id, id: note.id) %>
+          <%= link_to 'Delete note', notebook_note_path(notebook_id:  @notebook.id, id: note.id), method: :delete %>
       </li>
     <% end %>
   </ul>

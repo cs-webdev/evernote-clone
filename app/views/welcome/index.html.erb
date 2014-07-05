@@ -5,10 +5,11 @@
         <div class="intro-left col-md-6">
             <h2>Everynote helps you remember everything across all the computers, phones and tablets you use.</h2>
             
-            <section class="sign-form" role="form" id="session-info">
+            <section id="sign-index" class="sign-form " role="form" id="session-info">
                 <% if signed_in? %>
-                <h4>Signed in as:</h4> <%= current_user.email %><br />
+                <h4>Signed in as:</h4><%= current_user.email %><br />
                 <%= link_to 'Sign out', sign_out_path, :method => :delete %>
+                <%= link_to 'Notebooks', notebooks_path %>
                 <% else %>
                 <%= link_to 'Sign in', sign_in_path %>
                 <% end %>
