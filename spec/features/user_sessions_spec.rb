@@ -16,6 +16,7 @@ feature 'User signs in' do
   end 
 end
 
+
 feature 'Account creation' do
   scenario 'Guest creates account with username' do
     user = build(:user)

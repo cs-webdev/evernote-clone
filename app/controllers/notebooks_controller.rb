@@ -1,12 +1,13 @@
 class NotebooksController < ApplicationController
-  skip_authorization_check
-  
+  authorize_resource
+
   def index
-    @notebooks = Notebook.all
+    @notebooks = current_user.notebooks
   end
 
   def show
     @notebook = Notebook.find(params[:id])
+    authorize! :show, @notebook
   end
 
   def new
@@ -15,6 +16,7 @@ class NotebooksController < ApplicationController
 
   def create
     @notebook = Notebook.new notebook_params
+    @notebook.user = current_user
     if @notebook.save
       redirect_to notebook_path(@notebook)
     else
@@ -24,6 +26,7 @@ class NotebooksController < ApplicationController
 
   def edit
     @notebook = Notebook.find params[:id]
+    authorize! :edit, @notebook
   end
 
   def destroy
