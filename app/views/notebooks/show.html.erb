@@ -1,13 +1,23 @@
 <div class="intro">
 
 	<table class="notebook-display">
-	  
+
 	    <tr>
 	      <td class="notebook-description"><h4><%= @notebook.description %></h4></td>
-	      <td><%= link_to "Delete" , @notebook, method: :delete %></td>
+	      <!-- <td><%= link_to "Delete" , @notebook, method: :delete %></td> -->
 	    </tr>
 	</table>
-	
+  <h2>NOTES:</h2>
+  <ul>
+    <% @notebook.notes.each do |note| %>
+      <li>
+          <%= note.text %>
+          <%= link_to 'Edit note', edit_notebook_note_path(notebook_id:  @notebook.id, id: note.id) %>
+      </li>
+    <% end %>
+  </ul>
+  <%= link_to "Add note", new_notebook_note_path(notebook_id:  @notebook.id) %>
+  <br/>
+  <br/>
 	<%= link_to "Back", notebooks_path %>
-
 </div>

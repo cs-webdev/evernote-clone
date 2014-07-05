@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   include Clearance::User
+  has_many :notebooks
 
   validates :username, length: { maximum: 40, too_long: "must have at most %{count} characters" }
 
@@ -10,5 +11,4 @@ class User < ActiveRecord::Base
   def get_username
     username.presence || "not defined"
   end
-
 end

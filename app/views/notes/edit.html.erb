@@ -1,0 +1,5 @@
+<h1>Edit note:</h1>
+
+<%= form_for @note, url: notebook_note_path(params[:notebook_id],params[:id]) do |form| %>
+  <%= render 'form', form: form %>
+<% end %>
