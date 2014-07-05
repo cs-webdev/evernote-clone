@@ -25,8 +25,9 @@ class NotesController < ApplicationController
   end
 
   def destroy
-    Note.find(params[:id]).destroy
-    redirect_to root_path
+    @note = Note.find params[:id]
+    @note.destroy
+    redirect_to notebook_path(@note.notebook)
   end
 
   def update

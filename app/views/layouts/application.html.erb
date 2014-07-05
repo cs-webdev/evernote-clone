@@ -32,16 +32,16 @@
       </section> 
     </div>
   </div>
-<% unless flash.empty? %>
-  <div id="flash">
-    <% flash.each do |key, value| %>
-      <div class="flash <%= key %>"><%= value %></div>
-    <% end %>
-  </div> 
-<% end %>
     <main>
         <div class="container">
-            <%= yield %>
+          <% unless flash.empty? %>
+            <div id="flash">
+              <% flash.each do |key, value| %>
+                <div class="flash <%= key %>"><%= value %></div>
+              <% end %>
+            </div>
+          <% end %>
+          <%= yield %>
         </div>
     </main>
 </body>
